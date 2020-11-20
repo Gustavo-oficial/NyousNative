@@ -29,6 +29,7 @@ const Autenticacao = () => {
   return(
     <Drawer.Navigator initialRouteName="Home">
     <Drawer.Screen name = "Home" component={Home}/>
+    <Drawer.Screen name="Logout" component={Logout} />
   </Drawer.Navigator>
   )
   
@@ -37,10 +38,10 @@ const Autenticacao = () => {
 export default function App() {
   return (
     <NavigationContainer>
-      <StackNavigator screenOptions={{ headerShown : false}}>
+      <Stack.Navigator initialRouteName="Autenticado">
        <Stack.Screen name = "Login" component={Login}/>
        <Stack.Screen name = "Autenticação" component={Autenticacao}/>
-    </StackNavigator>
+    </Stack.Navigator>
     </NavigationContainer>
   );
 }

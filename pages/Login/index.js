@@ -6,11 +6,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
 
-    const storeData = async (value) => {
+    const salvar = async (value) => {
         try {
           await AsyncStorage.setItem('@jwt', value)
         } catch (e) {
-          // saving error
+
         }
       }
 
@@ -32,7 +32,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
             if(data.status !== 404){
                 alert('Welcome!');
                 console.log(data.token);
-                storeData(data.token);
+                salvar(data.token);
                 navigation.push('Autenticacao');
             }else{
                 alert('Dados invalidos');  
@@ -42,6 +42,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
       return(
           <View style={styles.container}>
+            
+            <Image
+                style={styles.logo}
+                source={{
+                    uri: 'https://raw.githubusercontent.com/sena-code/React-Node/main/4%20-%20Trabalhando%20com%20react-bootstrap%20e%20react-router-dom/nyous-react/src/assets/img/Logo.svg',
+                }}
+            />
+
               <Text>Email</Text>
               <TextInput
                style={styles.input}
@@ -49,7 +57,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
                value={email}
                placeholder="Digite seu email"
              />
-            <Text>Email</Text>
+
+             
+            <Text>Senha</Text>
               <TextInput
                style={styles.input}
                onChangeText={text => setSenha(text)}
@@ -93,6 +103,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
     },
     textButton : {
         color: 'white'
-    }
+    }, 
+     logo : {
+      width: 200,
+      height: 200,
+     }
   });
   export default Login;
